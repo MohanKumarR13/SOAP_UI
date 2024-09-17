@@ -1,0 +1,89 @@
+1.
+SOAP UI
+---------
+How to create a soap project, test suite, test case
+----------------------------------------------------
+WSDL : Web Service Description Language
+https://svn.apache.org/repos/asf/airavata/sandbox/xbaya-web/test/Calculator.wsdl
+
+1. Create SOAP Project Using WSDL
+2. Create test suite and Test Cases
+3. Added contains assertion
+4. Execute tests in sequence and parallel
+5. Documentation
+---------------------------------------------------------------------------------------------
+2.
+How to create first REST Project, Test Suite and Test Case
+
+https://restcountries.com/v3.1/name/india  -> URL
+https://restcountries.com  --> End Point and com is domain
+/v3.1/name/india -> Resource
+
+GET => Select
+POST => Create
+PUT => Update
+DELETE => Delete
+
+WADL => Web Application Description Language
+
+1. Create REST Project Using WSDL
+2. Create test suite and Test Cases
+3. Added contains assertion
+4. Execute tests in sequence and parallel
+5. Documentation
+
+Xpath :
+Xpath is a query language for selecting nodes from an XML document
+Xpath can also used to compute values from the content of an XML document
+
+//m:AllPlayerNamesResponse/m:AllPlayerNamesResult/m:tPlayerName[1]/m:iId
+//m:AllPlayerNamesResponse/m:AllPlayerNamesResult/m:tPlayerName[1]/m:sName
+
+Count sName tags :
+count(//m:sName)
+Matches :
+matches(//m:AllPlayerNamesResponse/m:AllPlayerNamesResult/m:tPlayerName[1]/m:sName, "Constantin Grameni")
+
+Check name present alphabets:
+matches(//m:AllPlayerNamesResponse/m:AllPlayerNamesResult/m:tPlayerName[1]/m:sName, '[A-Za-z]*')
+
+Check ID NO:
+matches(//m:AllPlayerNamesResponse/m:AllPlayerNamesResult/m:tPlayerName[1]/m:iId,'\d')
+
+XQuery
+=======
+<soap:Body>
+
+{
+for $x in //m:AllPlayerNamesResponse/m:AllPlayerNamesResult/m:tPlayerName
+return <m:tPlayerName> {data($x/m:sName)} </m:tPlayerName>
+}
+</soap:Body>
+
+XML Script Assertion
+=====================
+import com.eviware.soapui.support.XmlHolder
+
+def xmlresponse=messageExchange.response.responseContent
+
+def paresexmlresponse=new XmlHolder(xmlresponse)
+paresexmlresponse.namespaces["ns"]='http://tempuri.org'
+
+def actsum=log.info paresexmlresponse.getNodeValue("//*:doAddResponse/*:return")
+
+
+GROOVEY
+--------
+${#Project#test}
+${Property#pwd}
+${#TestSuite#test}
+${#TestCase#test}
+
+
+
+
+
+
+
+
+
