@@ -1,0 +1,34 @@
+Endpoint=https://th-apex-soap-service.herokuapp.com/service/calculator
+Username=
+Password=
+Domain=
+AuthType=No Authorization
+Request=<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cal="http://calculator.services/">\
+   <soapenv:Header/>\
+   <soapenv:Body>\
+      <cal:doAdd>\
+         <!--Optional:-->\
+         <arg0>1000</arg0>\
+         <!--Optional:-->\
+         <arg1>50</arg1>\
+      </cal:doAdd>\
+   </soapenv:Body>\
+</soapenv:Envelope>
+Response=<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://calculator.services/">\
+   <soap:Body>\
+      <tns:doAddResponse>\
+         <return>1050</return>\
+      </tns:doAddResponse>\
+   </soap:Body>\
+</soap:Envelope>
+RawRequest=<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cal="http://calculator.services/">\
+   <soapenv:Header/>\
+   <soapenv:Body>\
+      <cal:doAdd>\
+         <!--Optional:-->\
+         <arg0>1000</arg0>\
+         <!--Optional:-->\
+         <arg1>50</arg1>\
+      </cal:doAdd>\
+   </soapenv:Body>\
+</soapenv:Envelope>
